@@ -18,7 +18,6 @@ This project predicts customer churn for a telecommunications company using mach
 ├── config/
 ├── data/
 ├── models/
-├── notebooks/
 ├── outputs/
 └── src/
 ```

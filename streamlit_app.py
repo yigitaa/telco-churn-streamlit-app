@@ -69,11 +69,9 @@ if os.path.exists(pipeline_path) and os.path.exists(features_path):
                 user_input[special_col] = 1 if user_input[special_col] == "Yes" else 0
                 pred, proba = predict_single(user_input, pipeline, model_features)
                 if pred == 1:
-                    st.success(f"Prediction: Churn", icon="⚠️")
-                    st.markdown(f'<span style="color:red;font-weight:bold;">Prediction: Churn</span>', unsafe_allow_html=True)
+                    st.error(f"Prediction: Churn", icon="⚠️")
                 else:
                     st.success(f"Prediction: Not churn", icon="✅")
-                    st.markdown(f'<span style="color:green;font-weight:bold;">Prediction: Not churn</span>', unsafe_allow_html=True)
                 st.info(f"Churn probability: {proba:.2%}")
 else:
     st.warning("Final model veya feature dosyası bulunamadı. Lütfen önce modeli eğitin.")

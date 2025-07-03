@@ -1,0 +1,6 @@
+# Proje için .gitignore dosyası
+config/kaggle.json
+__pycache__/
+*.pyc
+.env
+

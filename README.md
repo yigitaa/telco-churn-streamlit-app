@@ -55,9 +55,4 @@ The dataset is located in the `data/` folder: `WA_Fn-UseC_-Telco-Customer-Churn.
 ## Model
 The trained CatBoost model and pipelines are saved in the `models/` directory.
 
-## Authors
-- [Your Name]
-
-## License
-This project is licensed under the MIT License.
 

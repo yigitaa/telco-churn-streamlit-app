@@ -36,14 +36,14 @@ with col2:
         - **Churn**: Whether the customer has left the company (Yes or No) - Customers who left in the last month or quarter
         """)
 
-st.title("Telco Müşteri Churn Prediction")
+st.title("Telco Customer Churn Prediction")
 
 df = load_telco_data()
 df_clean = clean_data(df)
 df_feat = feature_engineering(df_clean)
 
 # Tahmin
-st.header("Tekil Müşteri Churn Tahmini")
+# st.header("Tekil Müşteri Churn Tahmini")
 pipeline_path = 'models/churn_pipeline_catboost_final.pkl'
 features_path = 'models/model_features.pkl'
 if os.path.exists(pipeline_path) and os.path.exists(features_path):
@@ -60,15 +60,15 @@ if os.path.exists(pipeline_path) and os.path.exists(features_path):
     main_internet_col = "InternetService" if "InternetService" in input_cols else None
     main_phone_col = "PhoneService" if "PhoneService" in input_cols else None
     special_col = "SeniorCitizen"
-    st.subheader("Müşteri Bilgilerini Girin:")
+    st.subheader("Please enter customer informations:")
     user_input = get_user_inputs(df, input_cols, internet_service_cols, phone_service_cols, main_internet_col, main_phone_col, special_col)
     if user_input:
         btn_col1, btn_col2, btn_col3 = st.columns([2,2,6])
         with btn_col2:
-            if st.button("Churn Tahmini Yap"):
+            if st.button("Churn Prediction"):
                 user_input[special_col] = 1 if user_input[special_col] == "Yes" else 0
                 pred, proba = predict_single(user_input, pipeline, model_features)
-                st.success(f"Tahmin: {'Churn' if pred == 1 else 'Churn Değil'}")
-                st.info(f"Churn olasılığı: {proba:.2%}")
+                st.success(f"Tahmin: {'Churn' if pred == 1 else 'Not churn'}")
+                st.info(f"Churn probability: {proba:.2%}")
 else:
     st.warning("Final model veya feature dosyası bulunamadı. Lütfen önce modeli eğitin.")

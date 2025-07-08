@@ -113,7 +113,7 @@ if os.path.exists(pipeline_path) and os.path.exists(features_path):
             st.pyplot(fig)
             # --- Similar Customers Analysis ---
             st.subheader("Similar Customers")
-            st.markdown("Kullanıcı girdisine en çok benzeyen müşteriler aşağıda listelenmiştir.")
+            st.markdown("The customers most similar to the user input are listed below.")
             # Kategorik ve sayısal sütunları ayır
             cat_cols = df_feat.select_dtypes(include=['object', 'category']).columns.tolist()
             num_cols = df_feat.select_dtypes(include=['int64', 'float64', 'bool']).columns.tolist()

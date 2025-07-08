@@ -1,18 +1,19 @@
 # Telco Customer Churn Prediction
 
-This project predicts customer churn for a telecommunications company using machine learning techniques. The solution is built with Python and leverages the CatBoost algorithm for classification, with a Streamlit web app for interactive predictions.
+This project predicts customer churn for a telecommunications company using machine learning. It is built with Python, utilizes the CatBoost algorithm for classification, and provides a user-friendly prediction interface via a Streamlit web app.
 
 ## Features
 - Data preprocessing and feature engineering
 - Model training with CatBoost
 - Model evaluation and visualization
-- Streamlit app for user-friendly predictions
-- Modular code structure for easy maintenance
+- Streamlit web interface for predictions
+- Modular and maintainable code structure
 
 ## Project Structure
 ```
 ├── README.md
 ├── requirements.txt
+├── environment.yml
 ├── streamlit_app.py
 ├── catboost_info/
 ├── config/
@@ -21,37 +22,39 @@ This project predicts customer churn for a telecommunications company using mach
 ├── outputs/
 └── src/
 ```
-- **data/**: Raw dataset(s)
-- **models/**: Trained models and pipelines
-- **src/**: Source code (data processing, training, prediction, visualization)
-- **notebooks/**: Jupyter notebooks for exploration and feature engineering
+- **data/**: Raw datasets
+- **models/**: Trained models and pipeline files
+- **src/**: Source code (data processing, training, prediction, utilities)
+- **catboost_info/**: CatBoost training logs and intermediate files
+- **config/**: Configuration files (e.g., kaggle.json)
+- **outputs/**: Model outputs and results
 - **streamlit_app.py**: Streamlit web application
 
-## Getting Started
+> Note: Scripts such as `model.py`, `train_catboost.py`, and `test_single_prediction.py` are now included in `.gitignore` and have been removed from the repository. These files are only available in your local development environment.
 
-### Prerequisites
+## Installation
+
+### Requirements
 - Python 3.8+
-- Install dependencies:
+- To install dependencies, run:
   ```bash
   pip install -r requirements.txt
   ```
+  or if you are using conda:
+  ```bash
+  conda env create -f environment.yml
+  conda activate TelcoChurnPrediction
+  ```
 
-### Usage
+## Usage
+
 1. **Train the Model**
-   - Run the training script:
+   - Training script (if available locally):
      ```bash
      python src/train_catboost.py
      ```
-2. **Run the Streamlit App**
-   - Start the web app:
+2. **Run the Streamlit Application**
+   - To start the web application:
      ```bash
      streamlit run streamlit_app.py
      ```
-
-## Data
-The dataset is located in the `data/` folder: `WA_Fn-UseC_-Telco-Customer-Churn.csv`.
-
-## Model
-The trained CatBoost model and pipelines are saved in the `models/` directory.
-
-

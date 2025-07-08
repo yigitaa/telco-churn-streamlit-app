@@ -3,4 +3,6 @@ config/kaggle.json
 __pycache__/
 *.pyc
 .env
-
+model.py
+train_catboost.py
+test_single_prediction.py

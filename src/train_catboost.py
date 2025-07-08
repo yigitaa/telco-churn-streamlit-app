@@ -14,6 +14,8 @@ df = load_telco_data()
 df_clean = clean_data(df)
 df_feat = feature_engineering(df_clean)
 
+df.info()
+df[df['customerID']=='9505-SQFSW']
 # cat_features ve X, feature engineering sonrası df_feat üzerinden oluşturulmalı
 cat_features = [i for i, col in enumerate(df_feat.drop(['Churn'], axis=1, errors='ignore').columns)
                 if (df_feat[col].dtype == 'object' or str(df_feat[col].dtype)=='category')]
@@ -44,9 +46,10 @@ def objective(trial):
         score = roc_auc_score(y_valid, y_proba)
         scores.append(score)
     return np.mean(scores)
-
+df_feat.columns
 X = df_feat.drop(['Churn'], axis=1, errors='ignore')
 y = df_feat['Churn']
+joblib.dump(X.columns.tolist(), 'models/model_features.pkl')
 
 # StratifiedKFold ile cross-validation
 cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
